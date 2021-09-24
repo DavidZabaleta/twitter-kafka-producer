@@ -11,7 +11,6 @@ subprojects {
     apply plugin: 'jacoco'
     apply plugin: 'io.spring.dependency-management'
 
-    compileJava.dependsOn validateStructure
     sourceCompatibility = JavaVersion.VERSION_11
 
     dependencies {
@@ -25,12 +24,26 @@ subprojects {
         testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
         testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
         implementation platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+        implementation 'com.google.code.gson:gson:2.8.8'
     }
 
     test.finalizedBy(project.tasks.jacocoTestReport)
 
+    jacocoTestCoverageVerification {
+        violationRules {
+            rule {
+                limit {
+                    counter = 'LINE'
+                    value = 'COVEREDRATIO'
+                    minimum = 0.97
+                }
+            }
+        }
+    }
+
     jacocoTestReport {
         dependsOn test
+        dependsOn jacocoTestCoverageVerification
         reports {
             xml.enabled true
             xml.destination file("${buildDir}/reports/jacoco.xml")
@@ -45,7 +58,6 @@ jacoco {
     toolVersion = "${jacocoVersion}"
     reportsDir = file("$buildDir/reports")
 }
-
 task jacocoMergedReport(type: JacocoReport) {
     dependsOn = subprojects.jacocoTestReport
     additionalSourceDirs.setFrom files(subprojects.sourceSets.main.allSource.srcDirs)

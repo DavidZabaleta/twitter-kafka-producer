@@ -2,4 +2,5 @@ dependencies {
     implementation project(':model')
     implementation 'org.springframework:spring-context'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation 'com.twitter:hbc-core:2.2.0'
 }

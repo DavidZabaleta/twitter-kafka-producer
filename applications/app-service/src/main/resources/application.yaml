@@ -3,15 +3,16 @@ server:
 spring:
   application:
     name: "TwitterKafkaProducer"
-  devtools:
-    add-properties: false
-  h2:
-    console:
-      enabled: true
-      path: "/h2"
-  profiles:
-    include: null
-adapter:
-  restconsumer:
-    timeout: 5000
-    url: "http://localhost:8080"
+apis:
+  twitter:
+    credentials:
+      consumerKey: ''
+      consumerSecret: ''
+      token: ''
+      secret: ''
+  weather:
+    url: 'https://weatherapi-com.p.rapidapi.com'
+    headers:
+      rapidapi-host: 'weatherapi-com.p.rapidapi.com'
+      credentials:
+        rapidapi-key: ''
