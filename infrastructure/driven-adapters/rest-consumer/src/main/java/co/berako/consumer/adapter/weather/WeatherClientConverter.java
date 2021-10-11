@@ -8,6 +8,7 @@ import co.berako.model.weather.Location;
 import co.berako.model.weather.LocationWeather;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class WeatherClientConverter {
     private WeatherClientConverter() {
@@ -15,6 +16,7 @@ public class WeatherClientConverter {
 
     public static LocationWeather convertLocationWeatherDTOToDomain(LocationWeatherDTO locationWeatherDTO) {
         return LocationWeather.builder()
+                .idLocationWeather(UUID.randomUUID().toString())
                 .location(convertLocationDTOToDomain(locationWeatherDTO.getLocation()))
                 .current(convertCurrentDTOToDomain(locationWeatherDTO.getCurrent()))
                 .dataRetrievedAt(new Date())

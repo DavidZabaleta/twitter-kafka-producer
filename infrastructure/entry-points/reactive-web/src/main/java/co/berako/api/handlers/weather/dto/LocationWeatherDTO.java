@@ -13,12 +13,14 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder(toBuilder = true)
 public class LocationWeatherDTO {
+    private String idLocationWeather;
     private LocationDTO location;
     private CurrentDTO current;
     private Date dataRetrievedAt;
 
     public static LocationWeatherDTO convertDomainToDTO(LocationWeather locationWeather) {
         return LocationWeatherDTO.builder()
+                .idLocationWeather(locationWeather.getIdLocationWeather())
                 .location(LocationDTO.convertDomainToDTO(locationWeather.getLocation()))
                 .current(CurrentDTO.convertDomainToDTO(locationWeather.getCurrent()))
                 .dataRetrievedAt(locationWeather.getDataRetrievedAt())

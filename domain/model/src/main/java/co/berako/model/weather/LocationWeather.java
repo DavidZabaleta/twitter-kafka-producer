@@ -10,6 +10,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Builder(toBuilder = true)
 public class LocationWeather {
+    private String idLocationWeather;
     private Location location;
     private Current current;
     private Date dataRetrievedAt;
