@@ -5,5 +5,6 @@ import reactor.core.publisher.Mono;
 
 public interface EventsGateway {
     <T> Mono<Boolean> emit(Event<T> event);
+
     Mono<Boolean> close();
 }
