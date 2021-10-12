@@ -9,4 +9,5 @@ import lombok.Data;
 @Builder(toBuilder = true)
 public class LocationWeatherParams {
     private String locationKey;
+    private String email;
 }

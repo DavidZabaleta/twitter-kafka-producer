@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "type": "object",
+  "title": "LocationWeatherParamsDTO",
+  "description": "Location Weather Params Schema",
+  "additionalProperties": true,
+  "properties": {
+    "locationKey": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "pattern": "^\\S+@\\S+\\.\\S+$",
+      "format": "email"
+    }
+  },
+  "required": [
+    "locationKey",
+    "email"
+  ]
+}

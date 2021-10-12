@@ -12,10 +12,12 @@ import lombok.NoArgsConstructor;
 @Builder(toBuilder = true)
 public class LocationWeatherParamsDTO {
     private String locationKey;
+    private String email;
 
     public static LocationWeatherParams convertDTOToDomain(LocationWeatherParamsDTO locationWeatherParamsDTO) {
         return LocationWeatherParams.builder()
                 .locationKey(locationWeatherParamsDTO.getLocationKey())
+                .email(locationWeatherParamsDTO.getEmail())
                 .build();
     }
 }

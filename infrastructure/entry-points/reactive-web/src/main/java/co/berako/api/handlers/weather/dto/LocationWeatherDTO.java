@@ -6,8 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,14 +14,14 @@ public class LocationWeatherDTO {
     private String idLocationWeather;
     private LocationDTO location;
     private CurrentDTO current;
-    private Date dataRetrievedAt;
+    private UserDTO user;
 
     public static LocationWeatherDTO convertDomainToDTO(LocationWeather locationWeather) {
         return LocationWeatherDTO.builder()
                 .idLocationWeather(locationWeather.getIdLocationWeather())
                 .location(LocationDTO.convertDomainToDTO(locationWeather.getLocation()))
                 .current(CurrentDTO.convertDomainToDTO(locationWeather.getCurrent()))
-                .dataRetrievedAt(locationWeather.getDataRetrievedAt())
+                .user(UserDTO.convertUserToDTO(locationWeather.getUser()))
                 .build();
     }
 }
