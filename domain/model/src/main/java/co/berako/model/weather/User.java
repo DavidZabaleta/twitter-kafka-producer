@@ -4,12 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @Builder(toBuilder = true)
-public class LocationWeather {
-    private String idLocationWeather;
-    private Location location;
-    private Current current;
-    private User user;
+public class User {
+    private String email;
+    private Date timestamp;
 }
